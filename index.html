@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>입력 창과 랜덤 메시지</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #00c6ff;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #0072ff, #00c6ff);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #0072ff, #00c6ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .input-field {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 14px;
+            width: 300px;
+            height: 21px;
+            border: 0px transparent;
+            border-radius: 100px;
+            z-index: 1;
+        }
+
+        .input-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .message-box {
+            width: 400px;
+            height: 50px;
+            border: 2px solid transparent;
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 15px;
+            background-color: #f8f8f8;
+        }
+
+        .button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 16px;
+            background-color: #000000;
+            color: #fff;
+            border: transparent;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #595959;
+        }
+
+        .button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://ibb.co/RQFVPry"><img src="https://i.ibb.co/mhjMtZ8/image.png" alt="image" border="0" style="width: 100px; height: auto;"></a>
+      </br>
+        <input type="text" id="myInput" placeholder="아무 얘기나 해보세요!" class="input-field">
+        <button onclick="showRandomMessage()" class="button">보내기</button>
+        <div id="message" class="message-box"></div>
+    </div>
+
+    <script>
+        function showRandomMessage() {
+            var inputText = document.getElementById("myInput").value;
+            var messageElement = document.getElementById("message");
+            var messages = ["김민찬은 말했다: 알았어", "김민찬은 말했다: 그걸 내가 어떻게 알아", "김민찬은 말했다: 네가 맞아", "김민찬은 말했다: 무우우어라아고오?", "김민찬은 말했다: 그거 참 흥미롭네", "김민찬은 말했다: 헉 진짜?!?!", "김민찬은 말했다: 그렇군"];
+
+            if (inputText) {
+                // 입력된 메시지가 있는 경우 랜덤한 메시지를 출력
+                var randomIndex = Math.floor(Math.random() * messages.length);
+                var randomMessage = messages[randomIndex];
+                messageElement.innerHTML = randomMessage;
+                messageElement.style.backgroundColor = "#ffffff";
+            } else {
+                // 입력된 메시지가 없는 경우 기본 메시지를 출력
+                messageElement.innerHTML = "김민찬은 말했다: 왜 아무 말도 안해?";
+                messageElement.style.backgroundColor = "#ffffff";
+            }
+        }
+    </script>
+</body>
+</html>
